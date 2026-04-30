@@ -1,0 +1,97 @@
+environmentName: CarRacing-v3
+runName: YourRunName
+seed: 1
+
+gradientSteps: 6000
+replayRatio: 100
+saveMetrics: True
+saveCheckpoint: True
+checkpointInterval: 1000
+resume: False
+checkpointToLoad: 50k
+
+episodesBeforeStart: 5
+numInteractionEpisodes: 1
+numEvaluationEpisodes: 1
+
+dreamer:
+  batchSize: 32
+  batchLength: 64
+  imaginationHorizon: 15
+
+  recurrentSize: 600
+  latentLength: 16
+  latentClasses: 16
+  encodedObsSize: 1024
+
+  useContinuationPrediction: False
+  actorLR: 0.00004
+  criticLR: 0.0001
+  worldModelLR: 0.0002
+  gradientNormType: 2
+  gradientClip: 100
+
+  discount: 0.997
+  lambda_: 0.95
+  freeNats: 3
+  betaPrior: 1.0
+  betaPosterior: 0.1
+  entropyScale: 0.0003
+
+  buffer:
+    capacity: 50000
+
+  encoder:
+    depth: 16
+    stride: 2
+    kernelSize: 4
+    activation: Tanh
+
+  decoder:
+    depth: 16
+    stride: 2
+    kernelSize: 5
+    activation: Tanh
+
+  recurrentModel:
+    hiddenSize: 200
+    activation: Tanh
+
+  priorNet:
+    hiddenSize: 200
+    numLayers: 2
+    activation: Tanh
+    uniformMix: 0.01
+  
+  posteriorNet:
+    hiddenSize: 200
+    numLayers: 2
+    activation: Tanh 
+    uniformMix: 0.01
+
+  reward:
+    hiddenSize: 400
+    numLayers: 2
+    activation: Tanh
+
+
+  continuation:
+    hiddenSize: 400
+    numLayers: 3
+    activation: Tanh
+
+  actor:
+    hiddenSize: 400
+    numLayers: 2
+    activation: Tanh
+
+  critic:
+    hiddenSize: 400
+    numLayers: 3
+    activation: Tanh
+
+folderNames:
+  metricsFolder: metrics
+  plotsFolder: plots
+  checkpointsFolder: checkpoints 
+  videosFolder: videos
