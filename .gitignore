@@ -1,9 +1,11 @@
 #python
 __pycache__/
-
+*.pyc
 #outputs
 metrics/*
 plots/*
 
-
+#keep the folder, (not the contents)
+!plots/.gitkeep
+!metrics/.gitkeep
 
